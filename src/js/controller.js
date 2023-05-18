@@ -1,7 +1,7 @@
-import * as model from './model.js';
-import appView from './views/appView.js';
-import searchView from './views/searchView.js';
-import currentLocationView from './views/currentLocationView.js';
+import * as model from "./model.js";
+import appView from "./views/appView.js";
+import searchView from "./views/searchView.js";
+import currentLocationView from "./views/currentLocationView.js";
 
 // Get location from Search bar
 const searchResult = async function (query) {
@@ -42,11 +42,8 @@ if (navigator.geolocation)
   );
 
 const renderWeather = function () {
-  try {
-    appView.render(model.state);
-  } catch (err) {
-    console.log(err);
-  }
+  appView.render(model.state);
+  console.log(err);
 };
 
 // Get location from button
