@@ -2,7 +2,9 @@ class CurrentLocationView {
   parentEl = document.querySelector('.current__location');
 
   addHandlerClick(handler) {
-    this.parentEl.addEventListener('click', function (event) {});
+    this.parentEl.addEventListener('click', function () {
+      handler();
+    });
   }
 }
 

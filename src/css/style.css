@@ -90,7 +90,7 @@ button {
 
 .navbar .navlist {
   display: flex;
-  gap: 50px;
+  gap: 20px;
 }
 
 .navbar .logo p {
@@ -110,8 +110,8 @@ button {
 }
 
 .navbar .search i {
-  font-size: 20px;
   position: relative;
+  font-size: 20px;
   left: 34px;
 }
 
@@ -141,12 +141,17 @@ button {
   font-size: var(--fs-small);
   color: var(--white);
   font-weight: var(--fw-500);
+  transition: 0.2s ease-in-out;
   background: hsla(204, 99%, 47%, 1);
   background: linear-gradient(
     315deg,
     hsla(204, 99%, 47%, 1) 0%,
     hsla(216, 99%, 47%, 1) 100%
   );
+}
+
+.navbar .current__location button:hover {
+  transform: scale(1.04);
 }
 
 .navbar .current__location button i {
@@ -163,7 +168,13 @@ button {
     gap: 10px;
   }
   .navbar .searchbar {
+    margin-left: -28px;
     width: 240px;
+  }
+  .navbar .search i {
+    font-size: 20px;
+    position: relative;
+    left: 6px;
   }
   .navbar .current__location button {
     width: 56px;
@@ -179,7 +190,7 @@ button {
   display: grid;
   grid-template-columns: 0.5fr 1.5fr;
   grid-template-rows: 0.7fr 1.3fr;
-  gap: 0px 20px;
+  gap: 0px 28px;
   grid-template-areas:
     '. main__dash'
     '. main__dash';
@@ -416,6 +427,23 @@ button {
   width: 100%;
   text-align: center;
   font-size: var(--fs-small);
+}
+
+.attribution a {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  transition: 0.2s ease-in-out;
+}
+
+.attribution a:hover {
+  color: var(--light-blue);
+}
+
+.attribution a i {
+  font-size: var(--fs-large);
 }
 
 .alert {

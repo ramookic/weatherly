@@ -32,7 +32,6 @@ const storeData = function (data) {
   data.alerts.length === 0
     ? (state.alert = {})
     : (state.alert = data.alerts[0].description);
-  console.log(state);
 };
 
 export const getCoords = async function (city) {
@@ -60,7 +59,6 @@ export const getLocation = async function (
     if (!res.ok) throw new Error(`${res.status} Location not found`);
 
     const data = await res.json();
-    console.log(data);
     state.location = {
       place:
         data.address.village ||
@@ -87,7 +85,6 @@ export const getData = async function (city) {
     if (!res.ok) throw new Error(`${res.status} Location not found`);
 
     const data = await res.json();
-    console.log(data);
     storeData(data);
   } catch (err) {
     throw err;
