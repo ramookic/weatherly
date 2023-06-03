@@ -4,12 +4,10 @@
   /***** Colors *****/
 
   /* Primary Colors */
-  --blue: #0160ed;
-  --light-blue: #018fed;
-  --dark: #0e0e10;
-  --dark-grey: #1f2123;
-  --white: #ffffff;
-  --ghost-white: #d3d3d3;
+  --light-blue: #1393d3;
+  --light: #f2f3f5;
+  --dark: #1e2124;
+  --dark-grey: #282b30;
 
   /* Font Family */
   --font-family: 'Outfit', sans-serif;
@@ -29,6 +27,9 @@
   /* Media */
   --desktop: 1440px;
   --mobile: 375px;
+
+  /* Shadow */
+  --shadow: var(--dark) 0px 8px 24px;
 }
 
 * {
@@ -38,9 +39,10 @@
 
 body {
   background: var(--dark);
-  color: var(--white);
+  color: var(--light);
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -58,6 +60,10 @@ button {
   cursor: pointer;
   outline: none;
   border: none;
+}
+
+svg {
+  shape-rendering: optimizeSpeed;
 }
 
 .container {
@@ -81,54 +87,71 @@ button {
 }
 
 .navbar {
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  padding: 20px 0 20px 0;
+  background: var(--dark);
+}
+
+.navbar .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 20px 0 20px 0;
 }
 
-.navbar .navlist {
+.navbar .container .nav__list {
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
-.navbar .logo p {
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo p {
   display: flex;
   align-items: center;
   font-weight: var(--fw-700);
   font-size: 28px;
 }
 
-.navbar .logo i {
+.logo i {
   font-size: 42px;
 }
 
-.navbar .search {
+.navbar .container .search {
   display: flex;
   align-items: center;
 }
 
-.navbar .search i {
+.navbar .container .search i {
   position: relative;
-  font-size: 20px;
+  font-size: 18px;
   left: 34px;
 }
 
-.navbar .searchbar {
+.navbar .container .searchbar {
   outline: none;
   border: none;
-  width: 420px;
+  max-width: 420px;
   padding: 12px;
   padding-inline: 22px;
   padding-inline-start: 40px;
   border-radius: 50px;
-  font-size: var(--fs-normal);
+  font-size: 14px;
   background: var(--dark-grey);
-  color: var(--white);
+  color: var(--light);
 }
 
-.navbar .current__location button {
+.navbar .container .nav__buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .container button {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -139,54 +162,78 @@ button {
   padding-inline-end: 22px;
   border-radius: 50px;
   font-size: var(--fs-small);
-  color: var(--white);
   font-weight: var(--fw-500);
-  transition: 0.2s ease-in-out;
-  background: hsla(204, 99%, 47%, 1);
-  background: linear-gradient(
-    315deg,
-    hsla(204, 99%, 47%, 1) 0%,
-    hsla(216, 99%, 47%, 1) 100%
-  );
+  transition: 0.3s ease-in-out;
+  background: var(--light-blue);
 }
 
-.navbar .current__location button:hover {
+.navbar .container button:hover {
   transform: scale(1.04);
 }
 
-.navbar .current__location button i {
-  font-size: 20px;
+.navbar .container button i {
+  font-size: 16px;
+}
+
+.navbar .container .current__location {
+  color: var(--light);
+}
+
+.navbar .container .hamburger {
+  display: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.navbar .container .hamburger i {
+  font-size: 32px;
 }
 
 @media (max-width: 768px) {
-  .navbar {
+  .navbar .container .nav__list {
+    position: fixed;
+    left: 0%;
+    top: -50%;
+    width: 100%;
+    background: var(--dark);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 6rem 1rem 2rem 0rem;
+    box-shadow: var(--shadow);
+    transition: 0.3s ease-in-out;
   }
-  .navbar .navlist {
-    display: flex;
-    gap: 10px;
+
+  .navbar .container .logo {
+    z-index: 10;
   }
-  .navbar .searchbar {
-    margin-left: -28px;
-    width: 240px;
+
+  .navbar .container .nav__list.active {
+    top: 0%;
   }
-  .navbar .search i {
-    font-size: 20px;
-    position: relative;
-    left: 6px;
+
+  .navbar .container .hamburger {
+    display: block;
+    opacity: 1;
+    z-index: 10;
   }
-  .navbar .current__location button {
-    width: 56px;
-  }
-  .navbar .current__location button span {
+
+  .navbar .container .hamburger i {
     display: none;
-    opacity: none;
+    opacity: 0;
+  }
+
+  .navbar .container .hamburger i.active {
+    display: block;
+    opacity: 1;
   }
 }
 
 .weather__dashboard {
-  margin: auto;
+  position: relative;
+  top: 92px;
+  margin-bottom: 6rem;
   display: grid;
   grid-template-columns: 0.5fr 1.5fr;
   grid-template-rows: 0.7fr 1.3fr;
@@ -205,6 +252,10 @@ button {
   background: var(--dark-grey);
   padding: 2rem;
   border-radius: 20px;
+}
+
+.current__weather .current__label {
+  font-weight: var(--fw-500);
 }
 
 .current__weather h1 {
@@ -241,12 +292,12 @@ button {
   gap: 5px;
   font-size: var(--fs-small);
   margin: 10px 0 10px 0;
-  border-top: 1px solid var(--ghost-white);
+  border-top: 1px solid var(--light);
   padding-top: 20px;
 }
 
 .current__weather .location p {
-  color: var(--ghost-white);
+  color: var(--light);
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -262,7 +313,7 @@ button {
 }
 
 .current__weather .time p {
-  color: var(--ghost-white);
+  color: var(--light);
 }
 
 .main__dash .heading {
@@ -272,6 +323,7 @@ button {
 }
 
 .main__dash .label {
+  font-weight: var(--fw-500);
   margin: 20px 0px 20px 0;
 }
 
@@ -288,7 +340,8 @@ button {
 
 .cards__label {
   font-size: var(--fs-normal);
-  color: var(--ghost-white);
+  font-weight: var(--fw-500);
+  color: var(--light);
 }
 
 .cards__list {
@@ -312,10 +365,12 @@ button {
 
 .card .card__info .card__info__label {
   font-size: var(--fs-small);
-  color: var(--ghost-white);
+  color: var(--light);
+  font-weight: var(--fw-400);
 }
 
 .card .card__info p {
+  font-weight: var(--fw-500);
   font-size: var(--fs-extra-large);
 }
 
@@ -344,11 +399,12 @@ button {
 }
 
 .main__dash .today__forecast .list .item span {
-  color: var(--ghost-white);
+  color: var(--light);
   font-size: var(--fs-small);
 }
 
 .weekly__forecast .label {
+  font-weight: var(--fw-500);
   margin-top: 20px;
 }
 
@@ -377,7 +433,8 @@ button {
 }
 
 .weekly__forecast .forecast__list li span {
-  color: var(--ghost-white);
+  color: var(--light);
+  font-weight: var(--fw-500);
   font-size: var(--fs-small);
 }
 
@@ -423,10 +480,15 @@ button {
 }
 
 .attribution {
-  margin: 20px 0 20px 0;
+  padding: 1rem 0 1rem 0;
+  margin-top: 20px;
   width: 100%;
   text-align: center;
   font-size: var(--fs-small);
+}
+
+.attribution p {
+  font-weight: var(--fw-500);
 }
 
 .attribution a {
@@ -434,7 +496,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--white);
+  font-weight: var(--fw-500);
+  color: var(--light);
   transition: 0.2s ease-in-out;
 }
 
@@ -462,6 +525,7 @@ button {
 }
 
 .error__message {
+  z-index: 9999;
   top: 20px;
   position: fixed;
   width: 100%;
@@ -481,7 +545,7 @@ button {
   align-items: center;
   width: 160px;
   font-size: var(--fs-small);
-  font-weight: var(--fw-700);
+  font-weight: var(--fw-500);
   background: #fbbf24;
   color: var(--dark-grey);
   padding: 12px;

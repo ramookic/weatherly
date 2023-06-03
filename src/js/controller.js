@@ -27,7 +27,7 @@ const getCoords = async function (position) {
   }
 };
 
-const init = function () {
+const getPosition = function () {
   if (navigator.geolocation)
     navigator.geolocation.getCurrentPosition(
       getCoords.bind(this),
@@ -42,10 +42,10 @@ const init = function () {
     );
 };
 
-init();
+getPosition();
 
 const renderWeather = function () {
   appView.render(model.state);
 };
 
-currentLocationView.addHandlerClick(init);
+currentLocationView.addHandlerClick(getPosition);

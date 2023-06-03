@@ -7,19 +7,19 @@
     <title>Weatherly</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="stylesheet" href="/src/css/style.css" />
-    <script defer type="module" src="/src/js/controller.js"></script>
+    <script type="module" defer src="./src/js/controller.js"></script>
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="container">
-      <div class="navbar">
+    <div class="navbar">
+      <div class="container">
         <div class="logo">
           <p><i class="bx bx-cloud"></i> Weatherly</p>
         </div>
-        <div class="navlist">
+        <div class="nav__list">
           <div class="search">
             <i class="bx bx-search-alt"></i>
             <input
@@ -30,12 +30,15 @@
               placeholder="Search city..."
             />
           </div>
-          <div class="current__location">
+          <div class="nav__buttons">
             <button class="current__location">
-              <i class="bx bx-current-location"></i>
-              <span>Current Location</span>
+              <i class="bx bx-current-location"></i> Current Location
             </button>
           </div>
+        </div>
+        <div class="hamburger">
+          <i class="menu__icon bx bx-menu-alt-right active"></i>
+          <i class="close__icon bx bx-x"></i>
         </div>
       </div>
     </div>
@@ -48,5 +51,6 @@
         ><i class="bx bxl-github"></i> GitHub</a
       >
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
